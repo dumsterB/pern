@@ -3,12 +3,11 @@ const express = require('express')
 const sequalize = require('./db')
 const models=require('./models/models')
 const cors=require('cors')
-const placesRoutes = require('./routes')
+const router = require('./routes/index')
 const app = express()
 app.use(cors())
 app.use(express.json())
-
-app.use(placesRoutes)
+app.use('/api',router)
 const PORT = process.env.PORT || 8000
 const start = async () => {
     try {
